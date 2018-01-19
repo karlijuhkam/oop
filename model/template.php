@@ -12,6 +12,43 @@ class template
     var $file = ''; //HTML malli faili nimi
     var $content = false; // HTML malli failist loetud sisu
     var $vars = array(); //HTML malli elementide nimetuste ja reaalväärtuste paarid
+
+    //HTML malli faili nime ja õiguste kontroll ning sisu lugemine siis, kui vajalikud tingimused on täidetud
+    function loadFile(){
+        if(!is_dir(VIEW_DIR)){
+            echo 'Ei ole leitud '.VIEW_DIR.' kataloogi.<br />';
+            exit;
+        }
+        //Kui faili nimi on määratud kujul views/failinimi.html
+        $file = $this->file;
+        if(file_exists($file) and is_file($file) and is_readable($file)){
+            $this->readFile($file);
+        }
+        //Kui faili nimi on määratud kujul failinimi.html
+        $file = VIEW_DIR.$this->file;
+        if(file_exists($file) and is_file($file) and is_readable($file)){
+            $this->readFile($file);
+        }
+
+        //Kui faili nimi on määratud kujul failinimi
+        $file = VIEW_DIR.$this->file.'.html';
+        if(file_exists($file) and is_file($file) and is_readable($file)){
+            $this->readFile($file);
+        }
+        //kui fail asub alamkaustas views/alamkaust/failinimi.html
+        //failinimi määrtaud kujul alamkaust.failinimi
+        $file = VIEW_DIR.str_replace('.','/',$this->$file).'.html';
+        if(file_exists($file) and is_file($file) and is_readable($file)){
+            $this->readFile($file);
+        }
+        //kui failisisu on ikkagi puudu
+        if($this->content === false){
+            echo 'Ei suutnud lugeda '.$this->file.' sisu.<br />';
+            exit;
+        }
+    }
+
+
     //HTML malli failist sisu lugemine
     function readFile($file){
         //$fp = fopen($file, 'r');
