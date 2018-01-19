@@ -1,3 +1,3 @@
-#Programmeerimisvahednite kasutamine
+#Programmeerimisvahendite kasutamine
 ##Karli Juhkam
 ###VS17
