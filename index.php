@@ -8,3 +8,6 @@
 
 //loeme sisse projekti onfiguratsiooni
 require_once 'conf.php';
+
+//proovime luua testobjekti template klassist
+$testTabel = new template('test');
