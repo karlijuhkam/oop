@@ -68,4 +68,9 @@ class template
 
         $this->content = file_get_contents($file);
     }
+
+    //funktsioon ühe paari lisamiseks
+    function set($name,$value){
+        $this->vars() = $value;
+    }
 }

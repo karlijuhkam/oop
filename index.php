@@ -16,3 +16,5 @@ $testTabel = new template('test');
 echo '<pre>';
 print_r($testTabel);
 echo '</pre>';
+
+
