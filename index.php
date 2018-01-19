@@ -11,3 +11,8 @@ require_once 'conf.php';
 
 //proovime luua testobjekti template klassist
 $testTabel = new template('test');
+
+//lisan objekti testvaade
+echo '<pre>';
+print_r($testTabel);
+echo '</pre>';
