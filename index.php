@@ -17,4 +17,7 @@ echo '<pre>';
 print_r($testTabel);
 echo '</pre>';
 
+$testTabel->set('esimine','1');
+$testTabel->set('teine','2');
 
+echo $testTabel->parse();

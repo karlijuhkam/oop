@@ -71,6 +71,14 @@ class template
 
     //funktsioon ühe paari lisamiseks
     function set($name,$value){
-        $this->vars() = $value;
+        $this->vars = $value;
+    }
+
+    function parse(){
+        $str = $this->content;
+        foreach ($this->vars as $name=>$value){
+            $str = str_replace('{'.$name.'}','$value',$str);
+        };
+      return $str;
     }
 }
