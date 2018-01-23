@@ -12,10 +12,6 @@ require_once 'conf.php';
 //loome lehe põhiosa objekti
 $mainTmpl = new template('main');
 
-//lisan objekti testvaade
-echo '<pre>';
-print_r($testTabel);
-echo '</pre>';
 
 $mainTmpl->set('lang','et');
 $mainTmpl->set('page_title','lehe_pealkiri');
@@ -25,3 +21,4 @@ $mainTmpl->set('lang_bar','Keeleriba');
 $mainTmpl->set('menu','Lehe menüü');
 $mainTmpl->set('content','lehe sisu');
 echo $mainTmpl->parse();
+
