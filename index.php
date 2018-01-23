@@ -9,15 +9,19 @@
 //loeme sisse projekti onfiguratsiooni
 require_once 'conf.php';
 
-//proovime luua testobjekti template klassist
-$testTabel = new template('test');
+//loome lehe põhiosa objekti
+$mainTmpl = new template('main');
 
 //lisan objekti testvaade
 echo '<pre>';
 print_r($testTabel);
 echo '</pre>';
 
-$testTabel->set('esimine','1');
-$testTabel->set('teine','2');
-
-echo $testTabel->parse();
+$mainTmpl->set('lang','et');
+$mainTmpl->set('page_title','lehe_pealkiri');
+$mainTmpl->set('user','Kasutaja');
+$mainTmpl->set('title','Pealkiri');
+$mainTmpl->set('lang_bar','Keeleriba');
+$mainTmpl->set('menu','Lehe menüü');
+$mainTmpl->set('content','lehe sisu');
+echo $mainTmpl->parse();
