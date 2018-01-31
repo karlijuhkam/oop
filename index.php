@@ -6,21 +6,24 @@
  * Time: 11:09
  */
 
-//loeme sisse projekti onfiguratsiooni
 require_once 'conf.php';
-require_once 'menu.php';
-
-//loome lehe põhiosa objekti
+// loome peamalli objekti template klassist
 $mainTmpl = new template('main');
-
-
-$mainTmpl->set('lang','et');
-$mainTmpl->set('page_title','lehe_pealkiri');
-$mainTmpl->set('user','Kasutaja');
-$mainTmpl->set('title','Pealkiri');
-$mainTmpl->set('lang_bar','Keeleriba');
-$mainTmpl->set('menu','Lehe menüü');
-$mainTmpl->set('content','lehe sisu');
-$mainTmpl->set('menu',$menu);
+// määrame reaalväärtused malli elementidele
+$mainTmpl->set('lang', 'et');
+$mainTmpl->set('page_title', 'Lehe pealkiri');
+$mainTmpl->set('user', 'Kasutaja');
+$mainTmpl->set('title', 'Pealkiri');
+$mainTmpl->set('lang_bar', 'Keeleriba');
+// katsetame menüü loomist
+require_once 'menu.php';
+$mainTmpl->set('content', 'Lehe sisu');
 echo $mainTmpl->parse();
-
+// kontrollime kontandite olemasolu
+$pairs = array(
+    'control' => 'login',
+    'user' => 'test');
+$link =  '';
+foreach ($pairs as $name => $value){
+    $http->addToLink($link, $name, $value);
+}
