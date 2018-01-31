@@ -19,11 +19,7 @@ $mainTmpl->set('lang_bar', 'Keeleriba');
 require_once 'menu.php';
 $mainTmpl->set('content', 'Lehe sisu');
 echo $mainTmpl->parse();
+
 // kontrollime kontandite olemasolu
-$pairs = array(
-    'control' => 'login',
-    'user' => 'test');
-$link =  '';
-foreach ($pairs as $name => $value){
-    $http->addToLink($link, $name, $value);
-}
+$link =  $http->getLink(array('control' => 'login','user' => 'test'));
+echo $link;
