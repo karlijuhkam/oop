@@ -20,7 +20,5 @@ require_once 'menu.php';
 $mainTmpl->set('content', 'Lehe sisu');
 echo $mainTmpl->parse();
 
-//konteollime $http sisu
-echo '<pre>';
-print_r($http->vars);
-echo '</pre>';
+//kontrollime control sisu
+echo $http->get('control');
