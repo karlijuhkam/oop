@@ -12,6 +12,8 @@ define('VIEW_DIR','views/');
 define('CONTROL_DIR','controllers/');
 define('LIB_DIR', 'libs/');
 
+define('DEFAULT_CONTROL','default');
+
 require_once LIB_DIR.'utils.php';
 //nõuame vajalike failide kasutamist
 require_once MODEL_DIR.'template.php';
