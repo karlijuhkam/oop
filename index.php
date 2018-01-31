@@ -20,6 +20,7 @@ require_once 'menu.php';
 $mainTmpl->set('content', 'Lehe sisu');
 echo $mainTmpl->parse();
 
-// kontrollime kontandite olemasolu
-$link =  $http->getLink(array('control' => 'login','user' => 'test'));
-echo $link;
+//konteollime $http sisu
+echo '<pre>';
+print_r($http->vars);
+echo '</pre>';
