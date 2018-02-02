@@ -34,7 +34,8 @@ class mysql
     function connect(){
         $this->conn = mysqli_connect($this->host,$this->user,$this->pass,$this->dbname);
         if($this->conn == false){
-            echo "Probleem andmebaasi ühendamisega";
+            echo "Probleem andmebaasi ühendamisega</br>";
+            exit;
         }
     }
 
