@@ -24,3 +24,6 @@ require_once 'menu.php';
 
 echo $mainTmpl->parse();
 
+echo '<pre>';
+print_r($db);
+echo '</pre>';
