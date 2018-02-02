@@ -14,7 +14,7 @@ $menuItemTmpl = new template('menu.menu_item');
 //avaleht
 $menuItemTmpl->set('menu_item_name', 'avaleht');
 //loome avalehe lingi
-$link = $http->getLink(array('control'=>'default'));
+$link = 'index.php';
 $menuItemTmpl->set('menu_item_url',$link);
 // täidame loodud elemendiga lehe menüü
 $menuItem = $menuItemTmpl->parse();
