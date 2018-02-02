@@ -11,6 +11,15 @@ $menuTmpl = new template('menu.menu');
 // loome menüü elemendi malli objekti
 $menuItemTmpl = new template('menu.menu_item');
 // ###############################################
+//avaleht
+$menuItemTmpl->set('menu_item_name', 'avaleht');
+//loome avalehe lingi
+$link = $http->getLink(array('control'=>'default'));
+$menuItemTmpl->set('menu_item_url',$link);
+// täidame loodud elemendiga lehe menüü
+$menuItem = $menuItemTmpl->parse();
+$menuTmpl->add('menu_items', $menuItem);
+
 // tegutseme ühe menüü elemendiga
 // esimene
 $menuItemTmpl->set('menu_item_name', 'esimene');
@@ -20,6 +29,7 @@ $menuItemTmpl->set('menu_item_url', $link);
 // täidame loodud elemendiga lehe menüü
 $menuItem = $menuItemTmpl->parse();
 $menuTmpl->add('menu_items', $menuItem);
+
 // tegutseme ühe menüü elemendiga
 // teine
 $menuItemTmpl->set('menu_item_name', 'teine');
@@ -29,6 +39,7 @@ $menuItemTmpl->set('menu_item_url', $link);
 // täidame loodud elemendiga lehe menüü
 $menuItem = $menuItemTmpl->parse();
 $menuTmpl->add('menu_items', $menuItem);
+
 // koostame valmis menüü vaade
 $menu = $menuTmpl->parse();
 // ja lisame antud vaade peamalli elemendile

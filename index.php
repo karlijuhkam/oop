@@ -16,7 +16,7 @@ $mainTmpl->set('page_title', 'Lehe pealkiri');
 $mainTmpl->set('user', 'Kasutaja');
 $mainTmpl->set('title', 'Pealkiri');
 $mainTmpl->set('lang_bar', 'Keeleriba');
-// katsetame menüü loomist
+
 //nõuame controllerite haldust
 require_once 'control.php';
 
@@ -24,4 +24,3 @@ require_once 'menu.php';
 
 echo $mainTmpl->parse();
 
-//kontrollime control sisu
