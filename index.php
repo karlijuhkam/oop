@@ -23,7 +23,8 @@ require_once 'control.php';
 require_once 'menu.php';
 
 echo $mainTmpl->parse();
+$db->getData('SELECT NOW()');
 
 echo '<pre>';
-print_r($db);
+print_r($result);
 echo '</pre>';

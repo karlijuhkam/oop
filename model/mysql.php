@@ -44,12 +44,25 @@ class mysql
         $result = mysqli_query($this->conn,$sql);
         if ($result == false){
             echo 'Probleem päringuga <br />';
-            echo '<b>'.$sql'.</b>';
+            echo '<b>'.$sql.'</b>';
             return false;
         }
         return $result;
 
 
+    }
+
+    //funktsioon mis annab päringu andmed
+    function getData($sql){
+        $result = $this->query($sql);
+        $data = array();
+        while ($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+        }
+        if (count($data) == 0){
+            return false;
+        }
+        return $data;
     }
 
 
