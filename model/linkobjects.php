@@ -12,6 +12,7 @@ class linkobject extends http
     var $protocol = 'http://';
     var $eq = '=';
     var $delim = '&amp;';
+    var $aie = array('lang_id'); //lingi kohustuslikud lisandid
     /**
      * linkobject constructor.
      */
@@ -31,11 +32,23 @@ class linkobject extends http
 
     }
     // loome täislingi põhilingi ja paaride kasutamisel
-    function getLink($add = array()){
+    function getLink($add = array(),$aie= array()){
         $link =  ''; // lingi loomiseks vajalik muutuja
         foreach ($add as $name => $value){
             // kõigepealt koostame paaride komplektid
             $this->addToLink($link, $name, $value);
+        }
+        foreach ($aie as $name){
+            $value = $this->get($name);
+            if($value != false){
+                $this->addToLink($link,$name,$value);
+            }
+        }
+        foreach ($this->aie as $name){
+            $value = $this->get($name);
+            if($value != false){
+                $this->addToLink($link,$name,$value);
+            }
         }
         // siin paarid name=value&name1=value1 on olemas
         // http://anna.ikt.khk.ee/oop_vs17_1/index.php?name=value&name1=value1
