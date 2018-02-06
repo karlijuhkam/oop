@@ -28,6 +28,7 @@ class mysql
         $this->user = $user;
         $this->pass = $pass;
         $this->dbname = $dbname;
+        $this->connect();
     }
 
     //funktsioon mis loob ühenduse andmebaasiga

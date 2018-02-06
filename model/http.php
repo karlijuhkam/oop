@@ -43,4 +43,9 @@ class http
             return false;
         }
     }
+
+    function set($name, $value){
+        $this->vars($name)=$value;
+
+    }
 }
