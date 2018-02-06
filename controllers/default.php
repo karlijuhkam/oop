@@ -6,4 +6,18 @@
  * Time: 09:46
  */
 
-$mainTmpl->set('content', 'Lehe vaikimisi sisu');
+$page_id = (int)$http->get('page_id'); //lehe id
+//lehe id järgi küsime sisu andmebaasist
+$sql ='SELECT content FROM content WHERE content_id='.fixDb($page_id);
+//küsime vajalikud andmed andmebaasist
+$result = $db->getData($sql);
+//kui vastavale page id'le ei leidu andmebaasis vastust
+if($result == false){
+    //andmed avalehe jaoks = is_first_page=1
+    $sql = 'SELECT * FROM content WHERE is_first_page='.fixDb(1);
+    $result = $db->getData($sql);
+}
+if($result != false){
+    $page = $result[0];
+    $mainTmpl->set('content', $page['content']);
+}
