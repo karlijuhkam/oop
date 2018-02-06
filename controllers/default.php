@@ -8,7 +8,7 @@
 
 $page_id = (int)$http->get('page_id'); //lehe id
 //lehe id järgi küsime sisu andmebaasist
-$sql ='SELECT content FROM content WHERE content_id='.fixDb($page_id);
+$sql ='SELECT * FROM content WHERE content_id='.fixDb($page_id);
 //küsime vajalikud andmed andmebaasist
 $result = $db->getData($sql);
 //kui vastavale page id'le ei leidu andmebaasis vastust
@@ -19,5 +19,6 @@ if($result == false){
 }
 if($result != false){
     $page = $result[0];
+    $http->set('page_id',$page['content_id']);
     $mainTmpl->set('content', $page['content']);
 }
