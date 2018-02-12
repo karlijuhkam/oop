@@ -9,8 +9,8 @@
 //loome sisselogimise vormi objekti
 $loginForm = new template('login');
 //paneme paika vajalikud väärtused malli sisustamiseks
-$loginForm->set('kasutaja','Kasutajanimi');
-$loginForm->set('parool','Parool');
+$loginForm->set('kasutaja','Kasutajanimi:');
+$loginForm->set('parool','Parool:');
 $loginForm->set('nupp','Logi sisse!');
 //paneme väärtused malli
-$mainTmpl=set('content', $loginForm->parse());
+$mainTmpl->set('content', $loginForm->parse());
