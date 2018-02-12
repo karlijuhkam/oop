@@ -26,5 +26,15 @@ if($result != false){
         $menuItem->set('menu_item_url',$link);
         $http->set('page_id',$page['content_id']);
         $menu->add('menu_items',$menuItem->parse());
+    }
 }
-$mainTmpl->add('menu',$menu->parse());}
+
+define('USER_ID',0); //mitte sisse logitud kasutaja
+if(USER_ID == ROLE_NONE){
+    $menuItem->set(menu_item_name, 'Logi sisse!');
+    $link = $http->getLink(array('control'=>'login'));
+    $menuItem->set('menu_item_url', $link);
+    $menu->add('menu_items', $menuItem->parse());
+}
+
+$mainTmpl->add('menu',$menu->parse());
