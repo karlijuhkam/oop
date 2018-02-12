@@ -12,5 +12,8 @@ $loginForm = new template('login');
 $loginForm->set('kasutaja','Kasutajanimi:');
 $loginForm->set('parool','Parool:');
 $loginForm->set('nupp','Logi sisse!');
+//link vormi töötluseks
+$link = $http->getLink(array('control'=>'login_do'));
+$loginForm->set('link',$link);
 //paneme väärtused malli
 $mainTmpl->set('content', $loginForm->parse());
