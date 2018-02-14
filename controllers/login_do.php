@@ -11,4 +11,7 @@ $password = $http->get('password');
 
 //koostame pärinug kasutaja kontrollimiseks
 $sql = 'SELECT * FROM user where username='.fixDb($username).' AND password='.fixDb(md5($password));
-echo $sql;
+$result = $db->getData($sql);
+echo '<pre>';
+print_r($result);
+echo '</pre>';
