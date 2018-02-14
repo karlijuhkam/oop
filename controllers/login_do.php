@@ -16,6 +16,7 @@ $result = $db->getData($sql);
 // kontrollime, kas andmed on olemas
 if($result != false){
     // kasutajale tuleb avada töösessioon
+
     echo 'Oled sisselogitud<br />';
 } else {
     // tuleb kasutajat suunata tagasi
