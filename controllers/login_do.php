@@ -8,10 +8,18 @@
 
 $username = $http->get('username');
 $password = $http->get('password');
-
-//koostame pärinug kasutaja kontrollimiseks
-$sql = 'SELECT * FROM user where username='.fixDb($username).' AND password='.fixDb(md5($password));
+// koostame päring kasutaja kontrollimiseks
+$sql = 'SELECT * FROM user '.
+    'WHERE username='.fixDb($username).
+    ' AND password='.fixDb(md5($password));
 $result = $db->getData($sql);
-echo '<pre>';
-print_r($result);
-echo '</pre>';
+// kontrollime, kas andmed on olemas
+if($result != false){
+    // kasutajale tuleb avada töösessioon
+    echo 'Oled sisselogitud<br />';
+} else {
+    // tuleb kasutajat suunata tagasi
+    // sisselogimisvormile
+    $link = $http->getLink(array('control' => 'login'));
+    $http->redirect($link);
+}
