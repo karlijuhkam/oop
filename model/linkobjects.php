@@ -12,7 +12,7 @@ class linkobject extends http
     var $protocol = 'http://';
     var $eq = '=';
     var $delim = '&amp;';
-    var $aie = array('lang_id'); //lingi kohustuslikud lisandid
+    var $aie = array('sid'); //lingi kohustuslikud lisandid
     /**
      * linkobject constructor.
      */
@@ -50,6 +50,7 @@ class linkobject extends http
                 $this->addToLink($link,$name,$value);
             }
         }
+
         // siin paarid name=value&name1=value1 on olemas
         // http://anna.ikt.khk.ee/oop_vs17_1/index.php?name=value&name1=value1
         if($link != ''){
