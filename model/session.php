@@ -23,6 +23,8 @@ class session
     {
         $this->http = &$http;
         $this->db = &$db;
+        $this->sid = $http->get('sid');
+
     }
     // loome sessiooni
     function sessionCreate($user = false){
