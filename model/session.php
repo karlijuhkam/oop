@@ -23,7 +23,6 @@ class session
     {
         $this->http = &$http;
         $this->db = &$db;
-        $this->sessionCreate();
     }
     // loome sessiooni
     function sessionCreate($user = false){
@@ -52,5 +51,11 @@ class session
             // et nad oleks veeebis kätte saadavad
             $this->http->set('sid', $sid);
         }
+    }
+    function clearSession(){
+        $sql = 'DELETE FROM session WHERE '.
+        time().' - UNIX_TIMESTAMP(changed) > '.
+        $this->timeout;
+        $this->db->query($sql);
     }
 }
