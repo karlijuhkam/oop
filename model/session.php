@@ -30,13 +30,14 @@ class session
     // loome sessiooni
     function sessionCreate($user = false){
         // kui kasutaja on anonüümne
-        if($user == false){
+        if($user == false) {
             // tekitame kasutaja andmed andmebaasi jaoks
             $user = array(
                 'user_id' => 0,
                 'role_id' => 0,
                 'username' => 'Anonüümne'
             );
+        }
             // loome sid
             $sid = md5(uniqid(time().mt_rand(1,1000), true));
             // salvestame andmed session tabelisse
@@ -54,7 +55,7 @@ class session
             // et nad oleks veeebis kätte saadavad
             $this->http->set('sid', $sid);
         }
-    }
+
     function clearSession(){
         $sql = 'DELETE FROM session WHERE '.
         time().' - UNIX_TIMESTAMP(changed) > '.
@@ -64,7 +65,7 @@ class session
 
     //sessiooni andmete kontroll
     function checkSession(){
-        $this->clearSessions();
+        $this->clearSession();
         // kui sid pole ja on lubatud anonüümne kasutaja
         if($this->sid === false and $this->anonymous){
             $this->sessionCreate();
@@ -110,5 +111,27 @@ class session
             define('USER_ID', 0);
             define('ROLE_ID', 0);
         }
+    }
+
+    //lisame sessiooni andmete uuendamise võimaluse
+    function flush(){
+        if($this->sid !== false){
+            $sql = 'UPDATE session SET changed=NOW(), '.
+                'svars='.fixDb($this->sid);
+            $this->db->query($sql);
+        }
+    }
+
+    //funktsioon mis suunab vastavale lehele
+    function redirect(){
+        //iga üleminekuga värskendame sessiooni andmed
+        global $sess;
+        $sess->flush();
+        if($url == false){
+            $url = $this->getLink();
+        }
+        $url = str_replace('&amp','&',$url);
+        header('Location: '.$url);
+        exit;
     }
 }
